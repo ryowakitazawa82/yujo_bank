@@ -3,7 +3,7 @@ from django.utils import timezone
 import uuid
 
 
-class Diary(models.Model):
+class YujoBank(models.Model):
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     date = models.DateField(verbose_name='日付', default=timezone.now)
     title = models.CharField(verbose_name='タイトル', max_length=40)

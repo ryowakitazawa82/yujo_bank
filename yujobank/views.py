@@ -2,9 +2,9 @@ from django.urls import reverse_lazy
 from django.utils import timezone
 from django.views.generic import TemplateView, CreateView, ListView, DetailView, UpdateView, DeleteView
 
-from diary.forms import DiaryForm
+from yujobank.forms import YujoBankForm
 
-from diary.models import Diary
+from yujobank.models import YujoBank
 
 
 class IndexView(TemplateView):
@@ -13,8 +13,8 @@ class IndexView(TemplateView):
 
 class DiaryCreateView(CreateView):
     template_name = 'diary_create.html'
-    form_class = DiaryForm
-    success_url = reverse_lazy('diary:diary_create_complete')
+    form_class = YujoBankForm
+    success_url = reverse_lazy('yujobank:diary_create_complete')
 
 
 class DiaryCreateCompleteView(TemplateView):
@@ -23,29 +23,29 @@ class DiaryCreateCompleteView(TemplateView):
 
 class DiaryListView(ListView):
     template_name = 'diary_list.html'
-    model = Diary
+    model = YujoBank
 
 
 
 class DiaryDetailView(DetailView):
     template_name = 'diary_detail.html'
-    model = Diary
+    model = YujoBank
 
 
 class DiaryUpdateView(UpdateView):
     template_name = 'diary_update.html'
-    model = Diary
+    model = YujoBank
     fields = ('date', 'title', 'text',)
-    success_url = reverse_lazy('diary:diary_list')
+    success_url = reverse_lazy('yujobank:yujobank_list')
 
     def form_valid(self, form):
-        diary = form.save(commit=False)
-        diary.updated_at = timezone.now()
-        diary.save()
+        YujoBank = form.save(commit=False)
+        YujoBank.updated_at = timezone.now()
+        YujoBank.save()
         return super().form_valid(form)
 
 
 class DiaryDeleteView(DeleteView):
     template_name = 'diary_detele.html'
-    model = Diary
-    success_url = reverse_lazy('diary:diary_list')
+    model = YujoBank
+    success_url = reverse_lazy('yujobank:yujobank_list')
