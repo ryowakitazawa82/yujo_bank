@@ -5,12 +5,12 @@
     <title>Title</title>
 </head>
 <body>
-{% for diary in diary_list %}
+{% for yujobank in yujobank_list %}
 <p>
-    {{ diary.date }}
-    <a href="{% url 'diary:diary_detail' diary.pk %}">{{ diary.title }}</a>
+    {{ yujobank.date }}
+    <a href="{% url 'yujobank:diary_detail' yujobank.pk %}">{{ yujobank.title }}</a>
 </p>
 {% endfor %}
-<a href="{% url 'diary:index' %}">戻る</a>
+<a href="{% url 'yujobank:index' %}">戻る</a>
 </body>
 </html>

@@ -1,10 +1,10 @@
 from django import forms
-from .models import Diary
+from .models import YujoBank
 
 
-class DiaryForm(forms.ModelForm):
+class YujoBankForm(forms.ModelForm):
     class Meta:
-        model = Diary
+        model = YujoBank
         fields = ('date', 'title', 'text',)
         widgets = {
             'date': forms.DateInput(attrs={'class': 'form-control'}),
